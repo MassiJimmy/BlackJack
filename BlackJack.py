@@ -2,8 +2,6 @@ import random
 
 # Create a deck of cards
 
-
-
 def create_deck():
     deck = []
     for suit in ['Hearts', 'Diamonds', 'Clubs', 'Spades']:
@@ -63,9 +61,9 @@ def play_game():
     if valuedealer == 21 and valuePlayer == 21:
         print("Push!")
     elif valuedealer == 21:
-        print("Dealer wins!")
+        print("Black jack! Dealer wins!")
     elif valuePlayer == 21:
-        print("Player wins!")
+        print("Black jack! Player wins!")
     else:
         while True:
             choice = player_choice()
