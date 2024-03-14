@@ -24,7 +24,7 @@ import tkinter as tk
 
 blackJack = tk.Tk()
 blackJack.title("Black Jack")
-blackJack.geometry("1000x500")
+blackJack.geometry("800x500")
 blackJack.configure(bg="green")
 
 TitleLabel = tk.Label(blackJack, text="Black Jack", font=("Arial", 24), bg="green", fg="black", relief="raised", borderwidth=3)

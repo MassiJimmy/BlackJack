@@ -22,4 +22,4 @@ for i in range(4):
         card_img = img.crop((left, upper, right, lower))
 
         # Save each card as a separate file
-        card_img.save(f'card_{i}_{j+2}.png')
+        card_img.save(f'img/card_{i}_{j+2}.png')
