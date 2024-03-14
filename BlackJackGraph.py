@@ -27,7 +27,7 @@ blackJack.title("Black Jack")
 blackJack.geometry("1000x500")
 blackJack.configure(bg="green")
 
-TitleLabel = tk.Label(blackJack, text="Black Jack", font=("Arial", 24), bg="green", fg="white", relief="raised", borderwidth=3)
+TitleLabel = tk.Label(blackJack, text="Black Jack", font=("Arial", 24), bg="green", fg="black", relief="raised", borderwidth=3)
 TitleLabel.grid(row=0, column=0, columnspan=5, pady=10 ,padx=10 ,sticky="nsew")
 
 def replay_game():
@@ -43,6 +43,8 @@ def quit_game():
     blackJack.destroy()
 
 def start_game():
+    global i 
+    i = 0
     play_game()
     startButton.destroy()
     replayButton = tk.Button(blackJack, text="Replay", font=("Arial", 16), bg="white", command=replay_game)
@@ -93,8 +95,10 @@ def deal(deck):
         hand.append(deck.pop(0))
     return hand
 
+i = 0
 
 def play_game():
+    global i
     deck = create_deck()
     player_hand = deal(deck)
     dealer_hand = deal(deck)
@@ -102,7 +106,6 @@ def play_game():
     dealer_label = tk.Label(blackJack, text=f"Dealer's hand value: {value(dealer_hand)}", font=("Arial", 16), bg="green", fg="white")
     player_label.grid(row=6, column=0, columnspan=5)
     dealer_label.grid(row=4, column=0, columnspan=5)
-    i = 0
     j = 0
     for card in player_hand:
         player_cardImage = tk.Label(blackJack)
@@ -135,20 +138,23 @@ def play_game():
         hit_button["state"] = "disabled"
         stand_button["state"] = "disabled"
     
-    def hit(i, hand, deck):
+    def hit(hand, deck):
+        global i
         hand.append(deck.pop(0))
         player_label.config(text=f"Player's hand value: {value(player_hand)}")
         player_cardImage = tk.Label(blackJack)
         player_cardImage.image = tk.PhotoImage(file=hand[i])
         player_cardImage['image'] = player_cardImage.image
         player_cardImage.grid(row=5, column=i)
-        i += 1
         if value(player_hand) > 21:
             result_label.config(text="Player busts! Dealer wins!")
             hit_button["state"] = "disabled"
             stand_button["state"] = "disabled"
         elif value(player_hand) == 21:
             result_label.config(text="Player wins!")
+            hit_button["state"] = "disabled"
+            stand_button["state"] = "disabled"
+        i += 1
             
     def stand(j, hand, deck):
         while value(dealer_hand) < value(player_hand) and value(player_hand) < 21:
@@ -173,7 +179,7 @@ def play_game():
         stand_button["state"] = "disabled"
     
 
-    hit_button.config(command=lambda: hit(i, player_hand, deck))
+    hit_button.config(command=lambda: hit(player_hand, deck))
     stand_button.config(command=lambda: stand(j, dealer_hand, deck))
 
 
