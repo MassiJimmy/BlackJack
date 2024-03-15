@@ -29,6 +29,8 @@ blackJack.configure(bg="green")
 
 TitleLabel = tk.Label(blackJack, text="Black Jack", font=("Arial", 24), bg="green", fg="black", relief="raised", borderwidth=3)
 TitleLabel.grid(row=0, column=0, columnspan=5, pady=10 ,padx=10 ,sticky="nsew")
+autor = tk.Label(blackJack, text="Black Jack created by: Jhonatan S. Oliveira, and code by: Jimmy", font=("Arial", 16), bg="green", fg="white")
+autor.grid(row=0, column=5, columnspan=5, pady=10 ,padx=10 ,sticky="nsew")
 
 def replay_game():
     #destroy all the widget
@@ -47,6 +49,7 @@ def start_game():
     i = 0
     play_game()
     startButton.destroy()
+    autor.destroy()
     replayButton = tk.Button(blackJack, text="Replay", font=("Arial", 16), bg="white", command=replay_game)
     quitButton = tk.Button(blackJack, text="Quit", font=("Arial", 16), bg="white", command=quit_game)
     replayButton.grid(row=2, column=0)
