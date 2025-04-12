@@ -29,7 +29,7 @@ blackJack.configure(bg="green")
 
 TitleLabel = tk.Label(blackJack, text="Black Jack", font=("Arial", 24), bg="green", fg="black", relief="raised", borderwidth=3)
 TitleLabel.grid(row=0, column=0, columnspan=5, pady=10 ,padx=10 ,sticky="nsew")
-autor = tk.Label(blackJack, text="Black Jack created by: Jhonatan S. Oliveira, and code by: Jimmy", font=("Arial", 16), bg="green", fg="white")
+autor = tk.Label(blackJack, text="Code by: Jimmy", font=("Arial", 16), bg="green", fg="white")
 autor.grid(row=0, column=5, columnspan=5, pady=10 ,padx=10 ,sticky="nsew")
 
 def replay_game():
